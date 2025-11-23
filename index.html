@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Grind Coffee</title>
+    <meta name="description" content="Your local spot for expertly crafted coffee and delicious treats.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    <style>
+        :root {
+            --primary-color: #a87938;
+            --secondary-color: #f4f0e8;
+            --text-color: #333;
+            --accent-color: #d2b48c;
+            --font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1498804103165-0d7663621c45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            color: white;
+            border-bottom: none;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .menu-item h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .menu-item p {
+            margin-bottom: 0;
+        }
+
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <h1>The Daily Grind Coffee</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Start Your Day Right</h2>
+            <p>Experience the perfect blend of coffee and community.</p>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are passionate about providing the highest quality coffee beans, roasted to perfection and brewed with care. Our cozy atmosphere and friendly staff create a welcoming space for coffee lovers to connect and enjoy their favorite beverages.</p>
+            <p>We source our beans from sustainable farms around the world, ensuring a rich and ethically sourced cup of coffee every time.  Come visit us and experience the difference!</p>
+        </section>
+
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Espresso</h3>
+                    <p>A concentrated shot of rich, dark coffee.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Latte</h3>
+                    <p>Espresso with steamed milk and a light layer of foam.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Cappuccino</h3>
+                    <p>Espresso with steamed milk and a thick layer of foamed milk.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Iced Coffee</h3>
+                    <p>Our signature blend served over ice.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Mocha</h3>
+                    <p>Espresso, chocolate syrup, and steamed milk.</p>
+                </div>
+                 <div class="menu-item">
+                    <h3>Americano</h3>
+                    <p>Espresso diluted with hot water.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="location">
+            <h2>Visit Us</h2>
+            <p>123 Coffee Street, Anytown, USA</p>
+            <p>Open Daily: 7am - 7pm</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.382116132024!2d-0.12602438422851563!3d51.48658812123261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760532c182b05d%3A0x39d4661cf562b404!2sBuckingham%20Palace!5e0!3m2!1sen!2suk!4v1696334317347!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 The Daily Grind Coffee</p>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.getElementById('preloader').style.display = 'none';
+        });
+
+
+        // Intersection Observer for animations
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Stop observing once shown
+                }
+            });
+        }, {
+            threshold: 0.2 // Show when 20% of the section is visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
